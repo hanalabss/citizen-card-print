@@ -1,0 +1,524 @@
+2025-01-21 11:18:21.096474: 'PhotoFrame' object has no attribute 'capture_photo'
+
+==================================================
+Timestamp: 2025-01-21 16:47:44.280489
+Error: invalid color name "#00000033"
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\main_screen.py", line 123, in __init__
+    self.start_button = CustomButton(
+                        ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\main_screen.py", line 24, in __init__
+    self.draw_button(self.normal_bg)
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\main_screen.py", line 44, in draw_button
+    self.create_rectangle(
+  File "C:\Python312\Lib\tkinter\__init__.py", line 2891, in create_rectangle
+    return self._create('rectangle', args, kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\tkinter\__init__.py", line 2861, in _create
+    return self.tk.getint(self.tk.call(
+                          ^^^^^^^^^^^^^
+_tkinter.TclError: invalid color name "#00000033"
+
+
+==================================================
+Timestamp: 2025-01-21 16:52:36.083961
+Error: name 'os' is not defined
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\photo_screen.py", line 27, in __init__
+    image_path = os.path.join(Config.RESOURCES_DIR, 'main.png')
+                 ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'
+
+
+==================================================
+Timestamp: 2025-01-21 17:02:25.466507
+Error: unknown color name "transparent"
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\photo_screen.py", line 60, in __init__
+    button_frame.configure(bg='transparent')  # 배경 투명하게
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\tkinter\__init__.py", line 1722, in configure
+    return self._configure('configure', cnf, kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\tkinter\__init__.py", line 1712, in _configure
+    self.tk.call(_flatten((self._w, cmd)) + self._options(cnf))
+_tkinter.TclError: unknown color name "transparent"
+
+
+==================================================
+Timestamp: 2025-01-21 17:02:44.840608
+Error: unknown color name "transparent"
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\photo_screen.py", line 60, in __init__
+    button_frame.configure(bg='transparent')  # 배경 투명하게
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\tkinter\__init__.py", line 1722, in configure
+    return self._configure('configure', cnf, kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\tkinter\__init__.py", line 1712, in _configure
+    self.tk.call(_flatten((self._w, cmd)) + self._options(cnf))
+_tkinter.TclError: unknown color name "transparent"
+
+
+==================================================
+Timestamp: 2025-01-21 17:19:49.635324
+Error: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\main.png'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 23, in __init__
+    self.bg_image = Image.open("main.png")  # 배경 이미지 로드
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\venv\Lib\site-packages\PIL\Image.py", line 3469, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\main.png'
+
+
+==================================================
+Timestamp: 2025-01-21 17:20:30.468924
+Error: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\main.png'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 23, in __init__
+    self.bg_image = Image.open("main.png")  # 배경 이미지 로드
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\venv\Lib\site-packages\PIL\Image.py", line 3469, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\main.png'
+
+
+==================================================
+Timestamp: 2025-01-21 17:31:32.312487
+Error: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\main.png'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 23, in __init__
+    self.bg_image = Image.open("main.png")  # 배경 이미지 로드
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\venv\Lib\site-packages\PIL\Image.py", line 3469, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\main.png'
+
+
+==================================================
+Timestamp: 2025-01-21 17:31:58.505087
+Error: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\resource\\main.png'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 23, in __init__
+    self.bg_image = Image.open("resource\main.png")  # 배경 이미지 로드
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\venv\Lib\site-packages\PIL\Image.py", line 3469, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Desktop\\citizen-card-print\\resource\\main.png'
+
+
+==================================================
+Timestamp: 2025-01-21 19:12:06.902631
+Error: 'InfoFrame' object has no attribute 'update_keyboard_position'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 160, in __init__
+    self.update_keyboard_position()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoFrame' object has no attribute 'update_keyboard_position'
+
+
+==================================================
+Timestamp: 2025-01-21 19:17:29.710693
+Error: 'InfoFrame' object has no attribute 'keyboard'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 72, in main
+    app = VisitorCardApp(root)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 39, in __init__
+    frame = F(self.main_container, self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 146, in __init__
+    layout.addWidget(self.keyboard)
+                     ^^^^^^^^^^^^^
+AttributeError: 'InfoFrame' object has no attribute 'keyboard'
+
+
+==================================================
+Timestamp: 2025-01-21 19:35:11.818818
+Error: type object 'ApplicationAttribute' has no attribute 'AA_EnableHighDpiScaling'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 24, in main
+    app.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ApplicationAttribute' has no attribute 'AA_EnableHighDpiScaling'
+
+
+==================================================
+Timestamp: 2025-01-21 19:35:18.438719
+Error: type object 'ApplicationAttribute' has no attribute 'AA_EnableHighDpiScaling'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 24, in main
+    app.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ApplicationAttribute' has no attribute 'AA_EnableHighDpiScaling'
+
+
+==================================================
+Timestamp: 2025-01-21 19:36:32.839884
+Error: type object 'ApplicationAttribute' has no attribute 'AA_EnableHighDpiScaling'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 24, in main
+    app.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'ApplicationAttribute' has no attribute 'AA_EnableHighDpiScaling'
+
+
+==================================================
+Timestamp: 2025-01-21 19:37:36.891808
+Error: name 'os' is not defined
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 20, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 28, in initUI
+    self.background.setPixmap(QPixmap(os.path.join(Config.RESOURCES_DIR, 'main.png')).scaled(
+                                      ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'
+
+
+==================================================
+Timestamp: 2025-01-21 19:39:45.104382
+Error: name 'os' is not defined
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 20, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 28, in initUI
+    self.background.setPixmap(QPixmap(os.path.join(Config.RESOURCES_DIR, 'main.png')).scaled(
+                                      ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'
+
+
+==================================================
+Timestamp: 2025-01-21 19:39:49.459757
+Error: name 'os' is not defined
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 20, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 28, in initUI
+    self.background.setPixmap(QPixmap(os.path.join(Config.RESOURCES_DIR, 'main.png')).scaled(
+                                      ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'
+
+
+==================================================
+Timestamp: 2025-01-21 19:40:54.307965
+Error: name 'os' is not defined
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 20, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 28, in initUI
+    self.background.setPixmap(QPixmap(os.path.join(Config.RESOURCES_DIR, 'main.png')).scaled(
+                                      ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'
+
+
+==================================================
+Timestamp: 2025-01-22 10:08:00.386645
+Error: 'InfoScreen' object has no attribute 'scale_factor'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 26, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 42, in initUI
+    preview_width = int(Config.CARD_WIDTH * self.scale_factor)
+                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'scale_factor'
+
+
+==================================================
+Timestamp: 2025-01-22 10:08:11.896728
+Error: 'InfoScreen' object has no attribute 'scale_factor'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 26, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 42, in initUI
+    preview_width = int(Config.CARD_WIDTH * self.scale_factor)
+                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'scale_factor'
+
+
+==================================================
+Timestamp: 2025-01-22 10:08:53.461249
+Error: 'InfoScreen' object has no attribute 'scale_factor'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 26, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 42, in initUI
+    preview_width = int(Config.CARD_WIDTH * self.scale_factor)
+                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'scale_factor'
+
+
+==================================================
+Timestamp: 2025-01-22 10:18:47.848852
+Error: 'InfoScreen' object has no attribute 'scale_factor'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 26, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 42, in initUI
+    preview_width = int(Config.CARD_WIDTH * self.scale_factor)
+                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'scale_factor'
+
+
+==================================================
+Timestamp: 2025-01-22 10:19:02.731091
+Error: 'InfoScreen' object has no attribute 'scale_factor'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 26, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 42, in initUI
+    preview_width = int(Config.CARD_WIDTH * self.scale_factor)
+                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'scale_factor'
+
+
+==================================================
+Timestamp: 2025-01-22 10:19:22.125259
+Error: 'InfoScreen' object has no attribute 'scale_factor'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 26, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 42, in initUI
+    preview_width = int(Config.CARD_WIDTH * self.scale_factor)
+                                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'scale_factor'
+
+
+==================================================
+Timestamp: 2025-01-22 10:19:48.880784
+Error: expected an indented block after function definition on line 231 (info_screen.py, line 232)
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 31, in main
+    from app import MainWindow
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 4, in <module>
+    from screens.info_screen import InfoScreen
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 232
+    if self.parent.current_image is not None:
+    ^^
+IndentationError: expected an indented block after function definition on line 231
+
+
+==================================================
+Timestamp: 2025-01-22 10:42:22.092918
+Error: 'InfoScreen' object has no attribute 'process_and_print'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 23, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 180, in initUI
+    issue_btn.clicked.connect(self.process_and_print)
+                              ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'process_and_print'
+
+
+==================================================
+Timestamp: 2025-01-22 11:13:41.781154
+Error: type object 'Config' has no attribute 'DISPLAY_WIDTH'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 19, in initUI
+    self.setFixedSize(Config.DISPLAY_WIDTH, Config.DISPLAY_HEIGHT)
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Config' has no attribute 'DISPLAY_WIDTH'
+
+
+==================================================
+Timestamp: 2025-01-22 13:52:23.371957
+Error: name 'print_btn' is not defined
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 43, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 23, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 185, in initUI
+    self.keyboard = VirtualKeyboard(self)
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\virtual_keyboard.py", line 47, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\virtual_keyboard.py", line 129, in initUI
+    special_layout.addWidget(print_btn, 0, 4)
+                             ^^^^^^^^^
+NameError: name 'print_btn' is not defined. Did you mean: 'shift_btn'?
+
