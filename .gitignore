@@ -1,24 +1,92 @@
-# Virtual Environment
-venv/
-env/
-.env/
-
-# Python
+# Byte-compiled files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Virtual environment (venv)
+*.env
+*.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / Packaging
+*.egg-info/
+*.eggs/
+dist/
+build/
+*.egg
+
+# C extensions
 *.so
-.Python
 
-# Data files
-*.xlsx
-*.csv
-data/
+# Static files (HTML/JS/CSS)
+staticfiles/
+node_modules/
 
-# IDE settings
-.vscode/
-.idea/
+# Logs and debugging files
+*.log
+*.out
+*.err
+logs/
 
-# System files
+# OS generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Icon?
+.Trashes
+*.swp
+*.swo
+*.lock
+*.bak
+*.tmp
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# Coverage reports
+htmlcov/
+.coverage
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS specific files
+._*
+
+# Windows specific files
+*.lnk
+
+# Test environments
+test/
+tests/
+.tox/
+.pytest_cache/
+.coverage
+.cache
+
+# Configuration files
+*.cfg
+*.ini
+*.toml
+
+# Data and large files
+*.csv
+*.xls*
+*.sqlite3
+*.db
+*.zip
+*.tar.gz
+*.rar
+data/
+results/
