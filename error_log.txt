@@ -522,3 +522,24 @@ Traceback (most recent call last):
                              ^^^^^^^^^
 NameError: name 'print_btn' is not defined. Did you mean: 'shift_btn'?
 
+
+==================================================
+Timestamp: 2025-01-23 14:32:35.709559
+Error: 'InfoScreen' object has no attribute 'name_input'
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\citizen-card-print\src\main.py", line 82, in main
+    window = MainWindow()
+             ^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 11, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\app.py", line 30, in initUI
+    info_screen = InfoScreen(self)
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 24, in __init__
+    self.initUI()
+  File "C:\Users\user\Desktop\citizen-card-print\src\screens\info_screen.py", line 162, in initUI
+    self.name_input.setStyleSheet(input_style)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'InfoScreen' object has no attribute 'name_input'
+

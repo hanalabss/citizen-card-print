@@ -44,8 +44,8 @@ class Config:
     OUTPUT_DIR = os.path.join(DATA_DIR, 'output')  # 바탕화면의 폴더 안에 output 폴더
     PRINTER_DPI = 300
     
-    PHOTO_WIDTH = 26
-    PHOTO_HEIGHT = 36
+    PHOTO_WIDTH = 35
+    PHOTO_HEIGHT = 40
     
     # 초기 폴더 생성
     @classmethod

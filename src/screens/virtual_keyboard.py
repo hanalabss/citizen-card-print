@@ -76,7 +76,7 @@ class VirtualKeyboard(QWidget):
             for i, key in enumerate(row):
                 button = QPushButton(self.get_display_key(key))
                 button.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-                button.setFont(QFont('맑은 고딕', 20))
+                button.setFont(QFont('맑은 고딕', 28))
                 button.clicked.connect(lambda checked, text=key: self.button_clicked(text))
                 button.setStyleSheet(self.get_button_style())
                 row_layout.addWidget(button, 0, i)
@@ -90,27 +90,27 @@ class VirtualKeyboard(QWidget):
         # 각 버튼 설정
         hangul_btn = QPushButton('한/영')
         hangul_btn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        hangul_btn.setFont(QFont('맑은 고딕', 20))
+        hangul_btn.setFont(QFont('맑은 고딕', 28))
         hangul_btn.clicked.connect(self.toggle_hangul)
         hangul_btn.setStyleSheet(self.get_special_button_style('#4299E1'))
-        hangul_btn.setFixedWidth(80)  # 고정 너비 설정
+        hangul_btn.setFixedWidth(100)  # 고정 너비 설정
 
         shift_btn = QPushButton('Shift')
         shift_btn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        shift_btn.setFont(QFont('맑은 고딕', 20))
+        shift_btn.setFont(QFont('맑은 고딕', 28))
         shift_btn.clicked.connect(self.toggle_shift)
         shift_btn.setStyleSheet(self.get_special_button_style('#3182CE'))
-        shift_btn.setFixedWidth(80)  # 고정 너비 설정
+        shift_btn.setFixedWidth(100)  # 고정 너비 설정
 
         space_btn = QPushButton('Space')
         space_btn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        space_btn.setFont(QFont('맑은 고딕', 20))
+        space_btn.setFont(QFont('맑은 고딕', 28))
         space_btn.clicked.connect(self.space_pressed)
         space_btn.setStyleSheet(self.get_button_style())
 
         backspace_btn = QPushButton('←')
         backspace_btn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        backspace_btn.setFont(QFont('맑은 고딕', 20))
+        backspace_btn.setFont(QFont('맑은 고딕', 28))
         backspace_btn.clicked.connect(self.backspace)
         backspace_btn.setStyleSheet(self.get_special_button_style('#E53E3E'))
 
@@ -133,7 +133,7 @@ class VirtualKeyboard(QWidget):
         special_layout.setColumnStretch(1, 2)  # Shift 버튼
         special_layout.setColumnStretch(2, 4)  # Space 버튼
         special_layout.setColumnStretch(3, 2)  # Backspace 버튼
-        special_layout.setColumnStretch(4, 2)  # 인쇄 버튼
+        # special_layout.setColumnStretch(4, 2)  # 인쇄 버튼
 
         self.layout.addLayout(special_layout)
         self.setLayout(self.layout)
@@ -192,8 +192,6 @@ class VirtualKeyboard(QWidget):
             self.input_widget.setText(current_text + char)
             self.bumper = True
         
-        
-            
     def insert_text(self, char):
         if char:
             self.input_widget.setText(self.input_widget.text() + char)

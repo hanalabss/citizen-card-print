@@ -97,7 +97,7 @@ class InfoScreen(QWidget):
         zoom_label = QLabel("확대/축소")
         zoom_label.setStyleSheet("color: #333; font-size: 13px;")
         self.zoom_slider = QSlider(Qt.Orientation.Horizontal)
-        self.zoom_slider.setRange(10, 30)
+        self.zoom_slider.setRange(10, 100)
         self.zoom_slider.setValue(10)
         self.zoom_slider.setFixedWidth(200)  # 슬라이더 너비 고정
         self.zoom_slider.valueChanged.connect(self.update_preview)
@@ -145,37 +145,34 @@ class InfoScreen(QWidget):
         # === 오른쪽: 입력 폼 영역 ===
         right_container = QFrame()
         form_layout = QVBoxLayout(right_container)
-        form_layout.setSpacing(15)
-        
+        form_layout.setSpacing(10)
+
+        # 공통 스타일시트 선언
+        input_style = """
+        QLineEdit {
+        font-size: 62px;
+        font-family: '맑은 고딕';
+        padding: 5px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        }
+        """
+
         # 이름 입력
         name_label = QLabel("이름")
-        name_label.setStyleSheet("font-weight: bold; font-size: 14px;")
+        name_label.setStyleSheet("font-weight: bold; font-size: 40px;")
         self.name_input = QLineEdit()
-        self.name_input.setFixedHeight(40)
-        self.name_input.setStyleSheet("""
-            QLineEdit {
-                font-size: 18px;
-                padding: 5px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-        """)
-        
-        # 생년월일 입력
+        self.name_input.setFixedHeight(80)
+        self.name_input.setStyleSheet(input_style)
+
+        # 생년월일 입력 
         birth_label = QLabel("생년월일")
-        birth_label.setStyleSheet("font-weight: bold; font-size: 14px;")
+        birth_label.setStyleSheet("font-weight: bold; font-size: 40px;")
         birth_hint = QLabel("예시) 19901231")
-        birth_hint.setStyleSheet("color: gray;")
+        birth_hint.setStyleSheet("color: gray; font-size: 20px;")
         self.birth_input = QLineEdit()
-        self.birth_input.setFixedHeight(40)
-        self.birth_input.setStyleSheet("""
-            QLineEdit {
-                font-size: 18px;
-                padding: 5px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-        """)
+        self.birth_input.setFixedHeight(80)
+        self.birth_input.setStyleSheet(input_style)
         
         # 버튼 컨테이너
         button_container = QFrame()
@@ -183,19 +180,19 @@ class InfoScreen(QWidget):
         button_layout.setSpacing(20)
         
         # 버튼들
-        issue_btn = QPushButton("카드 발급")
-        retake_btn = QPushButton("다시 찍기")
+        issue_btn = QPushButton("발급")
+        retake_btn = QPushButton("재촬영")
         reset_btn = QPushButton("초기화")
         
         for btn in [issue_btn, retake_btn, reset_btn]:
-            btn.setFixedSize(150, 40)
+            btn.setFixedSize(135, 90)
             btn.setStyleSheet("""
                 QPushButton {
                     background-color: #5B9279;
                     color: white;
                     border: none;
                     border-radius: 5px;
-                    font-size: 14px;
+                    font-size: 28px;
                     font-weight: bold;
                 }
                 QPushButton:hover {
@@ -217,8 +214,9 @@ class InfoScreen(QWidget):
         form_layout.addWidget(birth_label)
         form_layout.addWidget(birth_hint)
         form_layout.addWidget(self.birth_input)
-        form_layout.addStretch()  # 버튼과 입력 필드 사이 공간
         form_layout.addWidget(button_container)
+        form_layout.addStretch()  # 버튼과 입력 필드 사이 공간
+        
         
         # 메인 레이아웃에 좌우 컨테이너 추가
         h_layout.addWidget(left_container)
@@ -226,15 +224,15 @@ class InfoScreen(QWidget):
         
         # 가상 키보드
         self.keyboard = VirtualKeyboard(self)
-        self.keyboard.setFixedSize(800, 300)
+        self.keyboard.setFixedSize(1000, 500)
         self.keyboard.move(
-            (Config.DISPLAY_WIDTH - 800) // 2,
-            Config.DISPLAY_HEIGHT - 300
+            (Config.DISPLAY_WIDTH - 1000) // 2,
+            Config.DISPLAY_HEIGHT - 500
         )
         
         # 입력 필드 포커스 이벤트
-        self.name_input.focusInEvent = lambda e: self.keyboard.switch_input(self.name_input)
-        self.birth_input.focusInEvent = lambda e: self.keyboard.switch_input(self.birth_input)
+        # self.name_input.focusInEvent = lambda e: self.keyboard.switch_input(self.name_input)
+        # self.birth_input.focusInEvent = lambda e: self.keyboard.switch_input(self.birth_input)
         self.keyboard.show()
 
     
@@ -473,8 +471,9 @@ class InfoScreen(QWidget):
 
     
     def showEvent(self, event):
-        """화면이 표시될 때"""
         super().showEvent(event)
+        self.keyboard.switch_input(self.name_input)  # 초기 입력 대상 설정
+        self.keyboard.show()  # 키보드 표시
         self.update_preview()
         
     def hideEvent(self, event):

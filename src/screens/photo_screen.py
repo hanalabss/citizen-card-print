@@ -74,29 +74,36 @@ class PhotoScreen(QWidget):
         self.preview_frame.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.preview_frame.move(
             (Config.DISPLAY_WIDTH - Config.PREVIEW_WIDTH) // 2,
-            (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2
+            (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2 - 80
         )
         
         # 촬영 버튼
         self.capture_button = QPushButton("촬영하기", self)
-        self.capture_button.setFixedSize(280, 70)
+        self.capture_button.setFixedSize(600, 120)
         self.capture_button.setStyleSheet("""
             QPushButton {
                 background-color: #5B9279;
                 color: white;
-                border: none;
-                border-radius: 35px;
-                font-size: 24px;
+                border: 4px solid #4A7A64;
+                border-radius: 60px;
+                font-size: 48px;
                 font-weight: bold;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
             }
             QPushButton:hover {
                 background-color: #4A7A64;
+                transform: scale(1.02);
+            }
+            QPushButton:pressed {
+                background-color: #3A6A54;
+                transform: scale(0.98);
             }
         """)
         self.capture_button.move(
-            (Config.DISPLAY_WIDTH - 280) // 2,
-            Config.DISPLAY_HEIGHT - 200
+            (Config.DISPLAY_WIDTH - 600) // 2,
+            Config.DISPLAY_HEIGHT - 250
         )
+
         self.capture_button.clicked.connect(self.capture_photo)
 
             # 메시지 표시 라벨 추가

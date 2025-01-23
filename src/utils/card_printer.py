@@ -20,7 +20,7 @@ class CardPrinter:
         
         # 폰트 설정 - Windows 시스템 폰트 사용
         self.FONT_NAME = "malgun gothic"  # 맑은고딕
-        self.FONT_SIZE = int(11 * self.PRINTER_DPI / 72)  # 11pt를 DPI에 맞게 변환
+        self.FONT_SIZE = int(16 * self.PRINTER_DPI / 72)  # 11pt를 DPI에 맞게 변환
         
     def print_card(self, name, birthdate, photo):
         try:
@@ -81,7 +81,7 @@ class CardPrinter:
             birth_x = (card_width_px - birth_width) // 2 - 30
             
             # 텍스트 y 좌표 계산
-            name_y = 240 + photo_height_px 
+            name_y = 260 + photo_height_px 
             birth_y = name_y + self.FONT_SIZE + 15
             
             # 텍스트 그리기
