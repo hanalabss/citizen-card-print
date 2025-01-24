@@ -231,8 +231,8 @@ class InfoScreen(QWidget):
         )
         
         # 입력 필드 포커스 이벤트
-        # self.name_input.focusInEvent = lambda e: self.keyboard.switch_input(self.name_input)
-        # self.birth_input.focusInEvent = lambda e: self.keyboard.switch_input(self.birth_input)
+        self.name_input.focusInEvent = lambda e: self.keyboard.switch_input(self.name_input)
+        self.birth_input.focusInEvent = lambda e: self.keyboard.switch_input(self.birth_input)
         self.keyboard.show()
 
     
