@@ -1,4 +1,6 @@
 import os
+from calendar import monthrange
+from datetime import datetime
 
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, 
     QLabel, QLineEdit, QPushButton, QFrame, QSlider, QMessageBox)
@@ -161,6 +163,8 @@ class InfoScreen(QWidget):
         # 이름 입력
         name_label = QLabel("이름")
         name_label.setStyleSheet("font-weight: bold; font-size: 40px;")
+        name_hint = QLabel("예시) 홍길동")
+        name_hint.setStyleSheet("color: gray; font-size: 20px;")
         self.name_input = QLineEdit()
         self.name_input.setFixedHeight(80)
         self.name_input.setStyleSheet(input_style)
@@ -173,6 +177,7 @@ class InfoScreen(QWidget):
         self.birth_input = QLineEdit()
         self.birth_input.setFixedHeight(80)
         self.birth_input.setStyleSheet(input_style)
+        self.birth_input.textChanged.connect(self.validate_birth_input)
         
         # 버튼 컨테이너
         button_container = QFrame()
@@ -210,6 +215,7 @@ class InfoScreen(QWidget):
         
         # 폼에 위젯 추가
         form_layout.addWidget(name_label)
+        form_layout.addWidget(name_hint)
         form_layout.addWidget(self.name_input)
         form_layout.addWidget(birth_label)
         form_layout.addWidget(birth_hint)
@@ -468,8 +474,110 @@ class InfoScreen(QWidget):
         self.update_preview()
         self.keyboard.hide()
         
+    def validate_birth_input(self, text):
+        """생년월일 입력값 검증"""
+        if text:
+            # 숫자만 남기기
+            numbers_only = ''.join(filter(str.isdigit, text))
+            
+            # 첫 글자는 1 또는 2만 허용
+            if len(numbers_only) >= 1 and not numbers_only.startswith(('1', '2')):
+                numbers_only = ''
+            # 두 번째 글자까지 입력된 경우 19 또는 20만 허용
+            elif len(numbers_only) >= 2 and not numbers_only.startswith(('19', '20')):
+                numbers_only = numbers_only[0]
+            
+            if len(numbers_only) == 3:
+                current = datetime.now()
+                current_year = str(current.year)
+                
+                # 현재 연도의 앞 3자리와 비교
+                if int(numbers_only) > int(current_year[:3]):
+                    numbers_only = numbers_only[:2]
+            
+            # 연도 검증 (4자리 입력된 경우)
+            if len(numbers_only) >= 4:
+                year = int(numbers_only[:4])
+                current_year = datetime.now().year
+                if year > current_year:
+                    numbers_only = numbers_only[:3]
+            
+            # 월의 첫 자리 검증 (5자리)
+            if len(numbers_only) == 5:
+                current = datetime.now()
+                year = int(numbers_only[:4])
+                
+                if numbers_only[4] not in ('0', '1'):
+                    numbers_only = numbers_only[:4]
+                # 현재 연도인 경우, 현재 월의 첫자리보다 큰 수는 입력 불가
+                elif year == current.year:
+                    current_month = str(current.month).zfill(2)  # 01, 02, ..., 12
+                    if int(numbers_only[4]) > int(current_month[0]):
+                        numbers_only = numbers_only[:4]
 
-    
+            # 월 검증 (6자리)
+            if len(numbers_only) == 6:
+                year = int(numbers_only[:4])
+                month = int(numbers_only[4:6])
+                current = datetime.now()
+                current_month = str(current.month).zfill(2)
+                
+                # 유효한 월이 아닌 경우 (1-12 이외의 숫자)
+                if month < 1 or month > 12:
+                    numbers_only = numbers_only[:5]
+                # 현재 연도인 경우, 현재 월보다 큰 월은 입력 불가
+                elif year == current.year and month > current.month:
+                    numbers_only = numbers_only[:5]
+            
+            # 일의 첫 자리 검증 (7자리)
+            if len(numbers_only) == 7:
+                year = int(numbers_only[:4])
+                month = int(numbers_only[4:6])
+                current = datetime.now()
+                
+                # numbers_only가 7자리이고 유효한 형식인지 확인
+                if len(numbers_only) >= 7 and numbers_only[6].isdigit():
+                    if month == 2:  # 2월인 경우
+                        if numbers_only[6] not in ('0', '1', '2'):
+                            numbers_only = numbers_only[:6]
+                    else:  # 다른 월인 경우
+                        if numbers_only[6] not in ('0', '1', '2', '3'):
+                            numbers_only = numbers_only[:6]
+                    
+                    # 현재 연월인 경우, 현재 일자의 첫자리보다 큰 수는 입력 불가
+                    if year == current.year and month == current.month:
+                        current_day = str(current.day).zfill(2)  # 01, 02, ..., 31
+                        if int(numbers_only[6]) > int(current_day[0]):
+                            numbers_only = numbers_only[:6]
+
+            # 일 검증 (8자리)
+            if len(numbers_only) == 8:
+                year = int(numbers_only[:4])
+                month = int(numbers_only[4:6])
+                day = int(numbers_only[6:8])
+                current = datetime.now()
+                
+                try:
+                    # 해당 월의 최대 일수 확인
+                    _, last_day = monthrange(year, month)
+                    
+                    # 현재 연월인 경우, 현재 일자보다 큰 날짜는 입력 불가
+                    if year == current.year and month == current.month:
+                        if day > current.day:
+                            numbers_only = numbers_only[:7]
+                    # 일이 유효하지 않은 경우
+                    elif day < 1 or day > last_day:
+                        numbers_only = numbers_only[:7]
+                except ValueError:
+                    numbers_only = numbers_only[:7]
+            
+            # 8자리로 제한
+            numbers_only = numbers_only[:8]
+            
+            if numbers_only != text:
+                self.birth_input.setText(numbers_only)
+                self.birth_input.setCursorPosition(len(numbers_only))
+
     def showEvent(self, event):
         super().showEvent(event)
         self.keyboard.switch_input(self.name_input)  # 초기 입력 대상 설정
