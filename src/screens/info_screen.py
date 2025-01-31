@@ -472,7 +472,7 @@ class InfoScreen(QWidget):
         self.zoom_slider.setValue(10)
         self.image_position = {"x": 0, "y": 0}
         self.update_preview()
-        self.keyboard.hide()
+        # self.keyboard.hide()
         
     def validate_birth_input(self, text):
         """생년월일 입력값 검증"""
