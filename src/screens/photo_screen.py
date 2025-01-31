@@ -62,6 +62,32 @@ class PhotoScreen(QWidget):
         self.background.setPixmap(pixmap)
         self.background.move(0, 0)
         
+        # 왼쪽 텍스트 레이블
+        self.left_text = QLabel("촬영하기 버튼을\n터치하고\n전면 카메라를\n3초간 쳐다봅니다.\n(3초 후 촬영)", self)
+        self.left_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.left_text.setStyleSheet("""
+            QLabel {
+                color: black;
+                font-size: 40px;
+                font-weight: bold;
+                background: transparent;
+            }
+        """)
+        self.left_text.setFixedSize(400, 350)  # 5줄 텍스트를 위한 높이 조정
+        
+        # 오른쪽 텍스트 레이블
+        self.right_text = QLabel("촬영하기 버튼을\n터치하고\n전면 카메라를\n3초간 쳐다봅니다.\n(3초 후 촬영)", self)
+        self.right_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.right_text.setStyleSheet("""
+            QLabel {
+                color: black;
+                font-size: 40px;
+                font-weight: bold;
+                background: transparent;
+            }
+        """)
+        self.right_text.setFixedSize(400, 350)  # 5줄 텍스트를 위한 높이 조정
+        
         # 카메라 프리뷰 프레임
         self.preview_frame = QLabel(self)
         self.preview_frame.setFixedSize(Config.PREVIEW_WIDTH, Config.PREVIEW_HEIGHT)
@@ -72,11 +98,20 @@ class PhotoScreen(QWidget):
             }
         """)
         self.preview_frame.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.preview_frame.move(
-            (Config.DISPLAY_WIDTH - Config.PREVIEW_WIDTH) // 2,
-            (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2 - 80
-        )
+        preview_x = (Config.DISPLAY_WIDTH - Config.PREVIEW_WIDTH) // 2
+        preview_y = (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2 - 80
+        self.preview_frame.move(preview_x, preview_y)
         
+        # 텍스트 레이블 위치 설정
+        self.left_text.move(
+            (preview_x - self.left_text.width()) // 2,  
+            preview_y + (Config.PREVIEW_HEIGHT - self.left_text.height()) // 2  # 세로 중앙 정렬
+        )
+        self.right_text.move(
+            preview_x + Config.PREVIEW_WIDTH + (preview_x - self.right_text.width()) // 2,  
+            preview_y + (Config.PREVIEW_HEIGHT - self.right_text.height()) // 2  # 세로 중앙 정렬
+        )
+
         # 촬영 버튼
         self.capture_button = QPushButton("촬영하기", self)
         self.capture_button.setFixedSize(600, 120)
