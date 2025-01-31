@@ -20,9 +20,7 @@
 ## 설치 방법
 
 1. 저장소 복제
-```bash
 git clone https://github.com/coreashield/citizen-card-print.git
-```
 
 2. 가상환경 생성 및 활성화
 ```bash
