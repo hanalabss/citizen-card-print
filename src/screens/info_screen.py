@@ -99,8 +99,8 @@ class InfoScreen(QWidget):
         zoom_label = QLabel("확대/축소")
         zoom_label.setStyleSheet("color: #333; font-size: 13px;")
         self.zoom_slider = QSlider(Qt.Orientation.Horizontal)
-        self.zoom_slider.setRange(10, 100)
-        self.zoom_slider.setValue(30)
+        self.zoom_slider.setRange(20, 100)
+        self.zoom_slider.setValue(40)
         self.zoom_slider.setFixedWidth(200)  # 슬라이더 너비 고정
         self.zoom_slider.valueChanged.connect(self.update_preview)
         self.zoom_slider.setStyleSheet("""
