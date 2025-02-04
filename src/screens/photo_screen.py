@@ -50,7 +50,7 @@ class PhotoScreen(QWidget):
         
     def initUI(self):
         # 배경 이미지 설정
-        bg_image_path = os.path.join(Config.RESOURCES_DIR, 'main.png')
+        bg_image_path = os.path.join(Config.RESOURCES_DIR, 'photo_bg.png')
         self.background = QLabel(self)
         self.background.setFixedSize(Config.DISPLAY_WIDTH, Config.DISPLAY_HEIGHT)
         pixmap = QPixmap(bg_image_path).scaled(

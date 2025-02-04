@@ -45,7 +45,6 @@ if os.path.exists(RESOURCES_DIR):
     if os.path.exists(test_img):
         datas.append((test_img, 'resources'))
 
-
 # Add data directory if it exists
 if os.path.exists(DATA_DIR):
     datas.append((DATA_DIR, 'data'))
@@ -66,10 +65,18 @@ hidden_imports = [
     'PyQt6.QtCore',
     'PyQt6.QtGui',
     'PyQt6.sip',
-    'openpyxl',
+    'numpy',
     'pandas',
-    'pandas.io.excel._base',
-    'pandas.io.excel._openpyxl'
+    'pandas.io.excel',
+    'pandas.io.common',
+    'pandas.io.formats',
+    'pandas.io.parsers',
+    'pandas.io.parsers.readers',
+    'openpyxl',
+    'openpyxl.cell',
+    'dateutil',
+    'pytz',
+    'openpyxl'
 ]
 
 # OpenCV 바이너리 수집

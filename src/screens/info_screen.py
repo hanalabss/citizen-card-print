@@ -469,7 +469,7 @@ class InfoScreen(QWidget):
         self.name_input.clear()
         self.birth_input.clear()
         self.rotation_angle = 0
-        self.zoom_slider.setValue(10)
+        self.zoom_slider.setValue(40)
         self.image_position = {"x": 0, "y": 0}
         self.update_preview()
         # self.keyboard.hide()

@@ -36,7 +36,7 @@ class VirtualKeyboard(QWidget):
         self.input_widget = input_widget
         self.second_screen = second_screen  # SecondScreen 인스턴스 저장
 
-        self.is_hangul = False
+        self.is_hangul = True
         self.is_uppercase = False
         self.hangul_composer = HangulComposer()
                 # 제목 표시줄 제거 및 항상 상위에 유지
