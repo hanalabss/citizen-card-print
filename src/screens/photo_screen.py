@@ -49,8 +49,10 @@ class PhotoScreen(QWidget):
             logging.error(f"카메라 초기화 오류: {str(e)}")
         
     def initUI(self):
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
         # 배경 이미지 설정
-        bg_image_path = os.path.join(Config.RESOURCES_DIR, 'photo_bg.png')
+        bg_image_path = os.path.join(Config.RESOURCES_DIR, 'bg.png')
         self.background = QLabel(self)
         self.background.setFixedSize(Config.DISPLAY_WIDTH, Config.DISPLAY_HEIGHT)
         pixmap = QPixmap(bg_image_path).scaled(
@@ -62,31 +64,22 @@ class PhotoScreen(QWidget):
         self.background.setPixmap(pixmap)
         self.background.move(0, 0)
         
-        # 왼쪽 텍스트 레이블
-        self.left_text = QLabel("촬영하기 버튼을\n터치하고\n전면 카메라를\n3초간 쳐다봅니다.\n(3초 후 촬영)", self)
-        self.left_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.left_text.setStyleSheet("""
+        self.guide_text = QLabel("촬영하기 버튼을 터치하면 3초 뒤 촬영됩니다.\n (전면 카메라를 봐주세요)", self)
+        self.guide_text.setFixedWidth(Config.DISPLAY_WIDTH)  # 전체 화면 너비로 설정
+        self.guide_text.setFixedHeight(200)  # 높이를 200으로 설정
+        self.guide_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.guide_text.setStyleSheet("""
             QLabel {
                 color: black;
-                font-size: 40px;
+                font-size: 64px;  /* 폰트 크기 증가 */
                 font-weight: bold;
                 background: transparent;
+                padding: 20px;  /* 여백 추가 */
+                line-height: 1.5;  /* 줄 간격 조정 */
             }
         """)
-        self.left_text.setFixedSize(400, 350)  # 5줄 텍스트를 위한 높이 조정
-        
-        # 오른쪽 텍스트 레이블
-        self.right_text = QLabel("촬영하기 버튼을\n터치하고\n전면 카메라를\n3초간 쳐다봅니다.\n(3초 후 촬영)", self)
-        self.right_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.right_text.setStyleSheet("""
-            QLabel {
-                color: black;
-                font-size: 40px;
-                font-weight: bold;
-                background: transparent;
-            }
-        """)
-        self.right_text.setFixedSize(400, 350)  # 5줄 텍스트를 위한 높이 조정
+        # 레이아웃에서 제거하고 직접 위치 지정
+        self.guide_text.move(0, self.guide_text.y() + 40)  # x는 0, y는 현재 위치 유지
         
         # 카메라 프리뷰 프레임
         self.preview_frame = QLabel(self)
@@ -99,18 +92,9 @@ class PhotoScreen(QWidget):
         """)
         self.preview_frame.setAlignment(Qt.AlignmentFlag.AlignCenter)
         preview_x = (Config.DISPLAY_WIDTH - Config.PREVIEW_WIDTH) // 2
-        preview_y = (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2 - 80
+        preview_y = (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2 
         self.preview_frame.move(preview_x, preview_y)
         
-        # 텍스트 레이블 위치 설정
-        self.left_text.move(
-            (preview_x - self.left_text.width()) // 2,  
-            preview_y + (Config.PREVIEW_HEIGHT - self.left_text.height()) // 2  # 세로 중앙 정렬
-        )
-        self.right_text.move(
-            preview_x + Config.PREVIEW_WIDTH + (preview_x - self.right_text.width()) // 2,  
-            preview_y + (Config.PREVIEW_HEIGHT - self.right_text.height()) // 2  # 세로 중앙 정렬
-        )
 
         # 촬영 버튼
         self.capture_button = QPushButton("촬영하기", self)
@@ -136,7 +120,7 @@ class PhotoScreen(QWidget):
         """)
         self.capture_button.move(
             (Config.DISPLAY_WIDTH - 600) // 2,
-            Config.DISPLAY_HEIGHT - 250
+            Config.DISPLAY_HEIGHT - 200
         )
 
         self.capture_button.clicked.connect(self.capture_photo)
