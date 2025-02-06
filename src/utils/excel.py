@@ -41,6 +41,9 @@ class ExcelManager:
             # 디렉토리 초기화
             Config.initialize_directories()
             
+            # 파일 경로 로깅
+            # print(f"Excel 저장 경로: {Config.EXCEL_PATH}")
+            
             new_data = pd.DataFrame({
                 '이름': [name],
                 '생년월일': [birthdate],
@@ -48,13 +51,19 @@ class ExcelManager:
             })
             
             if os.path.exists(Config.EXCEL_PATH):
+                # print("기존 Excel 파일 읽기 시도...")
                 df = pd.read_excel(Config.EXCEL_PATH)
                 df = pd.concat([df, new_data], ignore_index=True)
             else:
+                # print("새로운 Excel 파일 생성...")
                 df = new_data
             
             # 엑셀 파일 저장
-            df.to_excel(Config.EXCEL_PATH, index=False)
+            # print("Excel 파일 저장 시도...")
+            df.to_excel(Config.EXCEL_PATH, index=False, engine='openpyxl')
+            # print("Excel 파일 저장 성공!")
             return True
+            
         except Exception as e:
+            # print(f"Excel 저장 중 오류 발생: {str(e)}")
             return False
