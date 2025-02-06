@@ -95,7 +95,21 @@ class PhotoScreen(QWidget):
         preview_y = (Config.DISPLAY_HEIGHT - Config.PREVIEW_HEIGHT) // 2 
         self.preview_frame.move(preview_x, preview_y)
         
-
+        # 메시지 표시 라벨 추가
+        self.message_label = QLabel(self)
+        self.message_label.setFixedSize(Config.PREVIEW_WIDTH, Config.PREVIEW_HEIGHT)  # 프리뷰와 동일한 크기로 설정
+        self.message_label.move(preview_x, preview_y)  # 프리뷰와 동일한 위치에 배치
+        self.message_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.message_label.setStyleSheet("""
+            QLabel {
+                color: white;
+                /* background-color: rgba(0, 0, 0, 0.7); */
+                font-size: 400px;  /* 폰트 크기 더 증가 */
+                font-weight: bold;
+            }
+        """)
+        self.message_label.hide()  # 초기에는 메시지를 숨김
+        
         # 촬영 버튼
         self.capture_button = QPushButton("촬영하기", self)
         self.capture_button.setFixedSize(600, 120)
@@ -125,21 +139,6 @@ class PhotoScreen(QWidget):
 
         self.capture_button.clicked.connect(self.capture_photo)
 
-            # 메시지 표시 라벨 추가
-        self.message_label = QLabel(self)
-        self.message_label.setFixedSize(Config.DISPLAY_WIDTH, 50)  # 메시지 영역 높이 50
-        self.message_label.move(0, 10)  # 화면 위쪽에 위치
-        self.message_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.message_label.setStyleSheet("""
-            QLabel {
-                color: white;
-                background-color: rgba(0, 0, 0, 0.7);
-                font-size: 24px;
-                font-weight: bold;
-            }
-        """)
-        self.message_label.hide()  # 초기에는 메시지를 숨김
-        
     def showEvent(self, event):
         """위젯이 표시될 때 카메라 시작"""
         super().showEvent(event)
@@ -174,7 +173,7 @@ class PhotoScreen(QWidget):
         """사진 촬영 (텍스트 메시지 고정)"""
         def update_message(remaining_time):
             """남은 시간 메시지 업데이트"""
-            self.message_label.setText(f"{remaining_time}초 후에 찍힙니다")
+            self.message_label.setText(f"{remaining_time}")
             self.message_label.show()
 
         def hide_message():
@@ -212,8 +211,6 @@ class PhotoScreen(QWidget):
             timer.start(1000)  # 1초마다 실행
         
         countdown()  # 카운트다운 시작
-
-
 
     def hideEvent(self, event):
         """위젯이 숨겨질 때 타이머만 중지"""
